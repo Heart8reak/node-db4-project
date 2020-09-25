@@ -10,17 +10,15 @@ module.exports = {
 };
 
 function getRecipes() {
-	return db('recipe');
+	return db('recipes');
 }
 
-function getShoppingList(id) {
-	return db('recipe').where({ id });
+function getShoppingList(recipe_id) {
+	return db('ingredients').where({ recipe_id });
 }
 
-function getInstructions(id) {
-	return db('recipe')
-		.select('instructions')
-		.where({ id });
+function getInstructions(recipe_id) {
+	return db('steps').where({ recipe_id });
 }
 
 function addRecipes(newRecipe) {
